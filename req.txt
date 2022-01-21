@@ -77,14 +77,12 @@ requests
 scipy
 search-engine-parser
 selenium
-selenium==3.141.0
 setuptools
-setuptools>=40.3.0
 six
 spamwatch
 speedtest-cli
 sqlalchemy-json
-sqlalchemy==1.3.23
+sqlalchemy
 stagger
 telegraph
 telethon
