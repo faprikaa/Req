@@ -28,7 +28,7 @@ python-dotenv
 pytz
 rarfile
 removebg
-requests
+requests==2.26.0
 search-engine-parser
 selenium==3.141.0
 setuptools>=40.3.0
@@ -107,3 +107,5 @@ youtube-dl
 youtube-search
 zipfile38
 python-telegram-bot
+six==1.15.0
+urllib3=1.26.0
