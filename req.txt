@@ -43,7 +43,6 @@ wget
 wikipedia
 youtube_dl>=2021.1.8
 youtube-search-python==1.4.9
-python-telegram-bot
 aiohttp[speedups]
 async_generator
 asyncurban
@@ -67,7 +66,7 @@ hentai
 html_telegraph_poster
 htmlwebshot
 httplib2
-humanize 
+humanize
 jikanpy
 js2py
 justwatch
@@ -107,3 +106,4 @@ wordcloud
 youtube-dl
 youtube-search
 zipfile38
+python-telegram-bot
