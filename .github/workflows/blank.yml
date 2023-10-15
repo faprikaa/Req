@@ -45,10 +45,11 @@ jobs:
           rand=$[$RANDOM % ${#arr[@]}]
           
           # git commit -m "${arr[$rand]}"
-          git commit -m "auto commit"
+          git commit -m "Auto Commit - {$d}"
           
       - name: GitHub Push
-        uses: ad-m/github-push-action@v0.6.0
+        uses: ad-m/github-push-action@master
         with:
           directory: "."
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          force_with_lease: true
