@@ -47,7 +47,8 @@ jobs:
           rand=$[$RANDOM % ${#arr[@]}]
           
           # git commit -m "${arr[$rand]}"
-          git commit -m "Auto Commit - date '+%Y-%m-%d %H:%M'"
+          d=`date '+%Y-%m-%d %H:%M:%S'`
+          git commit -m "Auto Commit - $d"
           
       - name: GitHub Push
         uses: ad-m/github-push-action@master
