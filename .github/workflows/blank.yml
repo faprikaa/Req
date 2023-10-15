@@ -4,7 +4,9 @@ on:
 
   push:
     branches:
-      - master
+      - master      
+  schedule:
+  - cron: "01,01 00,12 * * *" # See https://crontab.guru/#0_7,9,11_*_*_1,3
 
 
 jobs:
