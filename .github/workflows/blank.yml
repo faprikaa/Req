@@ -1,52 +1,41 @@
 name: Commit
 
 on:
-
   push:
     branches:
-      - master      
+      - master
   schedule:
-  - cron: "01,01 00,12 * * *" # See https://crontab.guru/#0_7,9,11_*_*_1,3
-  
+    - cron: "01,01 00,12 * * *"
   workflow_dispatch:
-
 
 jobs:
   auto_commit:
     runs-on: ubuntu-latest
     steps:
-      - name: DEBUG 
+      - name: DEBUG
         run: echo "::debug::Ref = ${{github.ref}}"
-      - uses: actions/checkout@v3      
+      - uses: actions/checkout@v3
         with:
-         persist-credentials: false
-         fetch-depth: 0
-
+          persist-credentials: false
+          fetch-depth: 0
+          
       - name: Modify last update
         run: |
           d=`date '+%Y-%m-%d %H:%M:%S'`
           echo $d > LAST_UPDATED
+          
+      - name: Random Sleep
+        run: |
+          # Generate a random number between 1 and 259200
+          random_sleep=$(( ( RANDOM % 259200 ) + 1 ))
+          echo "Sleeping for $random_sleep seconds..."
+          sleep $random_sleep
           
       - name: Commit changes
         run: |
           git config --local user.email "muammarm28@gmail.com"
           git config --local user.name "faprikaa"
           git add -A
-          
-          arr[0]="chore(bot): 😂 auto commit"
-          arr[1]="chore(bot): 😱 auto commit"
-          arr[2]="chore(bot): 👿 auto commit"
-          arr[3]="chore(bot): 💩 auto commit"
-          arr[4]="chore(bot): 🙏 auto commit"
-          arr[5]="chore(bot): 🙈 auto commit"
-          arr[6]="chore(bot): 🐐 auto commit"
-          arr[7]="chore(bot): 🤖 auto commit"
-          arr[8]="chore(bot): 🟩 auto commit"
-          arr[9]="chore(bot): 👻 auto commit"
-          
-          rand=$[$RANDOM % ${#arr[@]}]
-          
-          # git commit -m "${arr[$rand]}"
           d=`date '+%Y-%m-%d %H:%M:%S'`
           git commit -m "Commit - $d"
           
