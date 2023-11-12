@@ -14,6 +14,7 @@ jobs:
     timeout-minutes: 8000
     env:
       RANDOM_SLEEP : $(( ( RANDOM % 432000 ) + 1 ))
+      CURRENT_DATE: '%Y-%m-%d %H:%M:%S'
     steps:
       - name: DEBUG
         run: echo "::debug::Ref = ${{github.ref}}"
@@ -24,22 +25,20 @@ jobs:
           
       - name: Modify last update
         run: |
-          d=`date '+%Y-%m-%d %H:%M:%S'`
-          echo $d > LAST_UPDATED
+          echo "Date is ${{env.CURRENT_DATE}}" > LAST_UPDATED
           
       - name: Random Sleep
         run: |
           # Generate a random number between 1 and 259200
           echo "Sleeping for ${{env.RANDOM_SLEEP}} seconds..."
-          sleep $random_sleep
+          sleep env.RANDOM_SLEEP
           
       - name: Commit changes
         run: |
           git config --local user.email "muammarm28@gmail.com"
           git config --local user.name "faprikaa"
           git add -A
-          d=`date '+%Y-%m-%d %H:%M:%S'`
-          git commit -m "Commit - $d"
+          git commit -m "Commit - ${{env.CURRENT_DATE}}"
           
       - name: GitHub Push
         uses: ad-m/github-push-action@master
