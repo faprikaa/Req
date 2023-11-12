@@ -27,7 +27,7 @@ jobs:
       - name: Random Sleep
         run: |
           # Generate a random number between 1 and 259200
-          random_sleep=$(( ( RANDOM % 259200 ) + 1 ))
+          random_sleep=$(( ( RANDOM % 432000 ) + 1 ))
           echo "Sleeping for $random_sleep seconds..."
           sleep $random_sleep
           
