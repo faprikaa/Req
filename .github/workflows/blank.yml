@@ -14,7 +14,7 @@ jobs:
     timeout-minutes: 8000
     env:
       RANDOM_SLEEP : $(( ( RANDOM % 432000 ) + 1 ))
-      CURRENT_DATE: '%Y-%m-%d %H:%M:%S'
+      CURRENT_DATE: '+%Y-%m-%d %H:%M:%S'
     steps:
       - name: DEBUG
         run: echo "::debug::Ref = ${{github.ref}}"
@@ -26,11 +26,11 @@ jobs:
       - name: Modify last update
         run: |
           echo "Date is ${{env.CURRENT_DATE}}" > LAST_UPDATED
+          echo "Sleeping for ${{env.RANDOM_SLEEP}} seconds..."
           
       - name: Random Sleep
         run: |
           # Generate a random number between 1 and 259200
-          echo "Sleeping for ${{env.RANDOM_SLEEP}} seconds..."
           sleep ${{env.RANDOM_SLEEP}}
           
       - name: Commit changes
