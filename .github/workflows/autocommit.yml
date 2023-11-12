@@ -14,7 +14,7 @@ jobs:
     timeout-minutes: 8000
     env:
       RANDOM_SLEEP : $(( ( RANDOM % 432000 ) + 1 ))
-      CURRENT_DATE: $(date '+%Y-%m-%d %H:%M:%S')
+      CURRENT_DATE: $(( `date '+%Y-%m-%d %H:%M:%S'` ))
     steps:
       - name: DEBUG
         run: echo "::debug::Ref = ${{github.ref}}"
