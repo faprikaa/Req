@@ -31,7 +31,7 @@ jobs:
         run: |
           # Generate a random number between 1 and 259200
           echo "Sleeping for ${{env.RANDOM_SLEEP}} seconds..."
-          sleep env.RANDOM_SLEEP
+          sleep ${{env.RANDOM_SLEEP}}
           
       - name: Commit changes
         run: |
