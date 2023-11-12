@@ -25,7 +25,7 @@ jobs:
           
       - name: Modify last update
         run: |
-          echo "Date is ${{ `date '+%Y-%m-%d %H:%M:%S'`}}" > LAST_UPDATED
+          echo "Date is $(date '+%Y-%m-%d %H:%M:%S')" > LAST_UPDATED
           echo "Sleeping for ${{env.RANDOM_SLEEP}} seconds..."
           
       - name: Random Sleep
