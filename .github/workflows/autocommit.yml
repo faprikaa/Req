@@ -7,10 +7,9 @@ on:
   schedule:
     - cron: "01,01 00,12 * * *"
   workflow_dispatch:
-runs-on: self-hosted
 jobs:
   auto_commit:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     timeout-minutes: 8000
     env:
       RANDOM_SLEEP : $(( ( RANDOM % 432000 ) + 1 ))
