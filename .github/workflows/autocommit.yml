@@ -5,7 +5,7 @@ on:
     branches:
       - master
   schedule:
-    - cron: "01,01 00,12 * * *"
+    - cron: "01 00 * * *"
   workflow_dispatch:
 jobs:
   auto_commit:
@@ -30,7 +30,12 @@ jobs:
           
       - name: Random Sleep
         run: |
-          # Generate a random number between 1 and 259200
+          days=$(( ${{env.RANDOM_SLEEP}} / 86400 ))
+          hours=$(( (${{env.RANDOM_SLEEP}} % 86400) / 3600 ))
+          minutes=$(( (${{env.RANDOM_SLEEP}} % 3600) / 60 ))
+          seconds=$(( ${{env.RANDOM_SLEEP}} % 60 ))
+
+          echo "Sleeping for $days days, $hours hours, $minutes minutes, $seconds seconds..."
           sleep ${{env.RANDOM_SLEEP}}
           
       - name: Commit changes
