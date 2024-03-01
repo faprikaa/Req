@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 8000
     env:
-      RANDOM_SLEEP: $(( ( (RANDOM % 3) + 1 ) * ( 24 * 60 ) ))
+      RANDOM_SLEEP: $(( ( (RANDOM % 15) + 1 ) * ( 24 * 60 ) ))
       CURRENT_DATE: "$(date '+%Y-%m-%d %H:%M:%S')"
     steps:
       - name: DEBUG
